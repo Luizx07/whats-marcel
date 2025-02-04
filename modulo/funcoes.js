@@ -154,4 +154,4 @@ const getPalavra = function(numero, palavra, nome){
 
  }
 
- console.log(getPalavra("11987876567", "Oi, como está indo o projeto?"))
+//  console.log(getPalavra("11987876567", "Oi, como está indo o projeto?"))
