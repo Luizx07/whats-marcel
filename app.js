@@ -17,7 +17,7 @@ app.use((request, response, next) =>{
 
 const dados = require("./modulo/funcoes")
 
-app.get('/v1/whatsapp/dados/pessoal/:numero', cors(), async function(request, response){
+app.get('/v1/whats/dados/pessoal/:numero', cors(), async function(request, response){
 
     let receber= request.params.numero
     let dadosP = dados.getListaDeDadosPessoais(receber)
@@ -31,7 +31,7 @@ app.get('/v1/whatsapp/dados/pessoal/:numero', cors(), async function(request, re
     }
 })
 
-app.get('/v1/whatsapp/perfil/:numero', cors(), async function(request, response) {
+app.get('/v1/whats/perfil/:numero', cors(), async function(request, response) {
 
     let receber = request.params.numero
     let dadosP = dados.getDadosPerfil(receber)
