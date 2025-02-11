@@ -155,3 +155,11 @@ const getPalavra = function(numero, palavra, nome){
  }
 
 //  console.log(getPalavra("11987876567", "Oi, como está indo o projeto?"))
+
+module.exports = {
+    getListaDeDadosPessoais,
+    getDadosPerfil,
+    dadosDeContatos,
+    getConversas,
+    getConversasPorNome
+  }

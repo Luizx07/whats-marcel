@@ -1,31 +1,46 @@
-const express = require('express'); 
-const app = express();  
+const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser')
 
-app.get('/whats/dados-pessoais/:id', (req, res) => {
-    const user = req.params.id
-    const dados = getListaDeDadosPessoais(user)
-    res.json(dados)
+const app = express ()
+
+app.use((request, response, next) =>{
+
+    response.header('Access-Control-Allow-Origin', '*')
+    
+    response.header('Access-Control-Allow-Methods', 'GET') 
+
+    app.use(cors())
+
+    next()
 })
 
-app.get('/whats/dados-perfil/:id', (req, res) => {
-    const user = req.params.id
-    const dados = getDadosPerfil(user)
-    res.json(dados)
+const dados = require("./modulo/funcoes")
+
+app.get('/v1/whatsapp/dados/pessoal/:numero', cors(), async function(request, response){
+
+    let receber= request.params.numero
+    let dadosP = dados.getListaDeDadosPessoais(receber)
+
+    if(dadosP){
+        response.status(200)
+        response.json(dadosP)
+    }else{
+        response.status(404)
+        response.json({'status': 404, 'message': 'Não foi encontrado'})
+    }
 })
 
-app.get('/whats/contatos/:numero', (req, res) => {
-    const numero = req.params.numero
-    const dados = dadosDeContatos(numero)
-    res.json(dados)
-})
+app.get('/v1/whatsapp/perfil/:numero', cors(), async function(request, response) {
 
-app.get('/whats/conversas/:numero', (req, res) => {
-    const numero = req.params.numero
-    const dados = getConversas(numero)
-    res.json(dados)
-})
+    let receber = request.params.numero
+    let dadosP = dados.getDadosPerfil(receber)
 
-// Iniciando o servidor
-app.listen('8080', () => {
-    console.log(`Servidor rodando na porta 8080}`)
+    if(dadosP){
+        response.status(200)
+        response.json(dadosP)
+    }else{
+        response.status(404)
+        response.json({'status': 404, 'message': 'Não foi encontrado'})
+    }
 })
