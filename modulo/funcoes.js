@@ -44,7 +44,7 @@ const getDadosPerfil = function(user){
 
 //console.log(getListaDeDadosPessoais(1))
 
-const dadosDeContatos = function(numero){
+const getDadosDeContatos = function(numero){
     let user =  String(numero)
     let dados = []
     let usuarios = {}
@@ -92,10 +92,10 @@ const getConversas = function(numero){
 }
 // console.log(getConversas('11955577796'))
 
-const getConversasPorNome = function(numero, conta){
+const getConversasPorNome = function(numero, contato){
     let status = false
     let numb = String(numero)
-    let nome = String(conta).toUpperCase()
+    let nome = String(contato).toUpperCase()
     let usuarios = {}
     let dados = []
 
@@ -125,7 +125,7 @@ const getConversasPorNome = function(numero, conta){
         return status
     }
 }
-// console.log(getConversasPorNome("11987876567", "Jane Smith"))
+//console.log(getConversasPorNome("11987876567", "Jane Smith"))
 
 const getPalavra = function(numero, palavra, nome){
     let nick = String(nome).toUpperCase()
@@ -154,12 +154,13 @@ const getPalavra = function(numero, palavra, nome){
 
  }
 
-//  console.log(getPalavra("11987876567", "Oi, como está indo o projeto?"))
+//console.log(getPalavra("11987876567", "Oi, como está indo o projeto?"))
 
 module.exports = {
     getListaDeDadosPessoais,
     getDadosPerfil,
-    dadosDeContatos,
+    getDadosDeContatos,
     getConversas,
-    getConversasPorNome
+    getConversasPorNome,
+    getPalavra
   }
